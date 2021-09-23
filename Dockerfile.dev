@@ -1,0 +1,15 @@
+FROM node:14.15.1-alpine
+
+WORKDIR /usr/app
+
+COPY package.json .
+COPY yarn.lock .
+
+RUN apk --no-cache add yarn
+RUN yarn --network-timeout 100000 && yarn cache clean
+RUN apk add --update bash && rm -rf /var/cache/apk/*
+
+COPY . .
+EXPOSE 8080
+
+CMD [ "npm", "run", "dev" ]

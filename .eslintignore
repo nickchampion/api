@@ -1,0 +1,6 @@
+node_modules
+.vscode
+.serverless
+app/modules/ravendb/models/*
+test/data/*
+scripts

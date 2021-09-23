@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Telehealth Appointment Link and Reminder</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+      body {
+        font-family: Raleway;
+      }
+      #templateColumns {
+        margin: 0 auto;
+      }
+
+      @media only screen and (max-width: 480px) {
+        #templateColumns {
+          width: 100% !important;
+        }
+
+        .templateColumnContainer {
+          display: block !important;
+          width: 100% !important;
+        }
+
+        .columnImage {
+          height: auto !important;
+          max-width: 480px !important;
+          width: 100% !important;
+        }
+
+        .logoImage {
+          height: auto !important;
+          max-width: 200px !important;
+          width: 100% !important;
+        }
+
+        .leftColumnContent {
+          font-size: 16px !important;
+          line-height: 125% !important;
+          text-align: center;
+        }
+
+        .rightColumnContent {
+          font-size: 16px !important;
+          line-height: 125% !important;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body style="text-align: center; margin: 0; padding: 0; background: #fff">
+    <div style="max-width: 700px; margin: 0 auto; background: #fff">
+      <header>
+        <div style="padding: 20px 0 10px">
+          <table border="0" cellpadding="0" cellspacing="0" width="680" id="templateColumns">
+            <tr>
+              <td align="left" valign="bottom" width="50%" class="templateColumnContainer">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <tr>
+                    <td align="left" valign="bottom" class="leftColumnContent">
+                      <img
+                        src="https://media.zesttee.com/cms/zesttee-logo_50b5f8d6d4f8_2182-b.png"
+                        width="200"
+                        style="max-width: 200px"
+                        class="logoImage"
+                      />
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td align="right" valign="bottom" width="50%" class="templateColumnContainer">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <tr>
+                    <td align="right" valign="bottom" class="rightColumnContent">
+                      <span style="text-transform: uppercase; font-size: 13px; font-weight: 600; padding-bottom: 5px; letter-spacing: 1px"
+                        >Your Trusted Digital Health Clinic</span
+                      >
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </header>
+      <content>
+        <div style="background: #fff">
+          <div>
+            <img
+              src="https://media.zesttee.com/cms/telehealth-appointment-link-and-reminder_6310-a.jpg"
+              alt="Your Trusted Digital Health Clinic"
+              style="width: 100%; display: block"
+            />
+          </div>
+          <div style="background: #f3f2f1">
+            <div style="max-width: 600px; margin: 0 auto; padding: 30px 0">
+              <p style="font-size: 24px; color: #252525; font-weight: 600; margin: 0; line-height: 20px">Hello <%= name%>,</p>
+              <p style="font-size: 16px; color: #252525; font-weight: 500; margin: 20px auto; line-height: 20px">
+                Your tele-consultation with your Zesttee doctor is confirmed for <%= time%>.
+              </p>
+              <p style="font-size: 16px; color: #252525; font-weight: 500; margin: 20px auto 0; line-height: 20px">
+                Kindly click on the appointment link below to start the video call on your web or mobile browser at the designated time and date.
+              </p>
+              <p style="font-size: 16px; color: #252525; font-weight: 500; margin: 20px auto 0; line-height: 20px">
+                Our doctors are highly approachable and patient and they are registered doctors with the Singapore medical council
+              </p>
+              <p style="padding: 10px 15px; margin: 0">
+                <a href="<%= url%>">
+                  <button
+                    style="
+                      font-size: 14px;
+                      background: #fedd44;
+                      border: none;
+                      padding: 15px 60px;
+                      font-weight: bold;
+                      color: #000;
+                      font-family: Raleway;
+                    "
+                  >
+                    START APPOINTMENT
+                  </button>
+                </a>
+              </p>
+              <p style="font-size: 16px; color: #252525; font-weight: 500; margin: 20px auto 0; line-height: 20px">Please be on time!</p>
+            </div>
+          </div>
+        </div>
+      </content>
+      <footer style="padding: 20px 0">
+        <!-- <p style="font-size: 12px; font-weight: 500; margin-bottom: 10px">
+          No longer want to receive these emails? <a href="#" style="color: #000; text-decoration: underline; font-weight: 600">Unsubscribe</a>
+        </p> -->
+        <ul style="list-style: none; margin: 0; padding: 0">
+          <li style="padding: 0; margin: 0 5px 0 0; display: inline-block; line-height: 18px; overflow: hidden; vertical-align: top">
+            <a href="https://www.instagram.com/zestteehealth/" target="_blank"
+              ><img src="https://media.zesttee.com/cms/ig-icon_2c2c451c3fc5_1953-a.png" width="18" alt="IG"
+            /></a>
+          </li>
+          <li style="padding: 0; margin: 0 5px 0 0; display: inline-block; line-height: 18px; overflow: hidden; vertical-align: top">
+            <a href="https://fb.me/ZestteeHealth" target="_blank"
+              ><img src="https://media.zesttee.com/cms/fb-icon_642df7390f5f_1922-a.png" width="18" alt="FB"
+            /></a>
+          </li>
+          <li style="padding: 0; margin: 0 5px 0 0; display: inline-block; line-height: 18px; overflow: hidden; vertical-align: top">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td valign="middle">
+                  <a href="https://api.whatsapp.com/send?phone=6588899378" target="_blank"
+                    ><img src="https://media.zesttee.com/cms/wa-icon_2e80e884532b_2212-b.png" width="18" alt="whatsapp"
+                  /></a>
+                </td>
+                <td valign="middle" style="font-size: 13px; font-family: Roboto, sans-serif">
+                  &nbsp;<a href="https://api.whatsapp.com/send?phone=6588899378" target="_blank" style="color: #252525; text-decoration: none"
+                    >88899378 (8889ZEST)</a
+                  >
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li style="padding: 0; margin: 0 5px 0 0; display: inline-block; line-height: 18px; overflow: hidden; vertical-align: top">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td valign="middle">
+                  <a href="https://t.me/zesttee" target="_blank"
+                    ><img src="https://media.zesttee.com/cms/telegram-icon_5b4730a45885_1954-a.png" width="18" alt="Telegram"
+                  /></a>
+                </td>
+                <td valign="middle" style="font-size: 13px; font-family: Roboto, sans-serif">
+                  &nbsp;<a href="https://t.me/zesttee" target="_blank" style="color: #252525; text-decoration: none">General Wellness</a>
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li style="padding: 0; margin: 0; display: inline-block; line-height: 18px; overflow: hidden; vertical-align: top">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td valign="top">
+                  <a href="https://t.me/Mrzesttee" target="_blank"
+                    ><img src="https://media.zesttee.com/cms/telegram-icon_5b4730a45885_1954-a.png" width="18" alt="Telegram"
+                  /></a>
+                </td>
+                <td valign="middle" style="font-size: 13px; font-family: Roboto, sans-serif">
+                  &nbsp;<a href="https://t.me/Mrzesttee" target="_blank" style="color: #252525; text-decoration: none">Men’s Health</a>
+                </td>
+              </tr>
+            </table>
+          </li>
+        </ul>
+        <p style="font-size: 13px; font-weight: 500; color: #252525; font-family: Roboto, sans-serif">
+          &copy; <%= new Date().getFullYear() %> Zesttee. All rights reserved.
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,138 @@
+image: zteregistry.azurecr.io/builder:latest
+
+variables:
+  DOCKER_DRIVER: overlay2
+  CI_REGISTRY_USER: zteregistry
+  CI_REGISTRY: zteregistry.azurecr.io
+  DOCKER_TAG: build-${CI_COMMIT_SHORT_SHA}
+  DOCKER_IMAGE: ${CI_REGISTRY}/${CI_IMAGE_NAME}
+
+stages:
+  - build
+  - unittests
+  - deploy
+  - test
+
+STG_Build:
+  stage: build
+  before_script:
+    - mkdir -p $HOME/.docker
+    - echo "$DOCKER_AUTH_CONFIG" >> "$HOME/.docker/config.json"
+  script:
+    - docker login ${CI_REGISTRY} -u ${CI_REGISTRY_USER} -p ${CI_TOKEN}
+    - docker build -t ${DOCKER_IMAGE} --target api .
+    - docker tag ${DOCKER_IMAGE} ${DOCKER_IMAGE}:${DOCKER_TAG}
+    - docker tag ${DOCKER_IMAGE} ${DOCKER_IMAGE}:stg-latest
+    - docker push ${DOCKER_IMAGE}:${DOCKER_TAG}
+    - docker push ${DOCKER_IMAGE}:stg-latest
+  only:
+    - staging
+  tags:
+    - zte
+
+# STG_UnitTests:
+#   stage: unittests
+#   script:
+#     - npm run test
+#   allow_failure: false
+#   only:
+#     - staging
+#   tags:
+#     - zte
+
+STG_Deploy:
+  stage: deploy
+  before_script:
+    - az login -u $CI_STG_AZURE_DEPLOY_NAME -p $CI_STG_AZURE_DEPLOY_PASSWORD
+  script:
+    - az webapp deployment slot swap --resource-group $CI_STG_RESOURCE_GROUP --name $CI_STG_WEBAPP_NAME --slot $CI_STG_WEBAPP_SLOT
+  only:
+    - staging
+  tags:
+    - zte
+
+STG_Test:
+  stage: test
+  image:
+    name: postman/newman_alpine33
+    entrypoint: ['']
+  script:
+    - npm install newman-reporter-slack
+    - newman --version
+    - newman run ci-tests.json -e ci-tests-stg-env.json -r 'cli,slack' --reporter-slack-channel '#automated-tests' --reporter-slack-webhook-url 'https://hooks.slack.com/services/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'
+  only:
+    - staging
+  tags:
+    - zte
+
+UAT_Build:
+  stage: build
+  before_script:
+    - mkdir -p $HOME/.docker
+    - echo "$DOCKER_AUTH_CONFIG" >> "$HOME/.docker/config.json"
+  script:
+    - docker login ${CI_REGISTRY} -u ${CI_REGISTRY_USER} -p ${CI_TOKEN}
+    - docker system prune -f
+    - docker build -t ${DOCKER_IMAGE} --target api .
+    - docker tag ${DOCKER_IMAGE} ${DOCKER_IMAGE}:${DOCKER_TAG}
+    - docker tag ${DOCKER_IMAGE} ${DOCKER_IMAGE}:uat-latest
+    - docker push ${DOCKER_IMAGE}:${DOCKER_TAG}
+    - docker push ${DOCKER_IMAGE}:uat-latest
+  only:
+    - uat
+  tags:
+    - zte
+
+UAT_Deploy:
+  stage: deploy
+  before_script:
+    - az login -u $CI_STG_AZURE_DEPLOY_NAME -p $CI_STG_AZURE_DEPLOY_PASSWORD
+  script:
+    - az webapp deployment slot swap --resource-group $CI_UAT_RESOURCE_GROUP --name $CI_UAT_WEBAPP_NAME --slot $CI_UAT_WEBAPP_SLOT --target-slot $CI_UAT_WEBAPP_TARGET_SLOT
+  only:
+    - uat
+  tags:
+    - zte
+
+UAT_Test:
+  stage: test
+  image:
+    name: postman/newman_alpine33
+    entrypoint: ['']
+  script:
+    - npm install newman-reporter-slack
+    - newman --version
+    - newman run ci-tests.json -e ci-tests-uat-env.json -r 'cli,slack' --reporter-slack-channel '#automated-tests' --reporter-slack-webhook-url 'https://hooks.slack.com/services/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'
+  only:
+    - uat
+  tags:
+    - zte
+
+LIVE_Build:
+  stage: build
+  before_script:
+    - mkdir -p $HOME/.docker
+    - echo "$DOCKER_AUTH_CONFIG" >> "$HOME/.docker/config.json"
+  script:
+    - docker login ${CI_REGISTRY} -u ${CI_REGISTRY_USER} -p ${CI_TOKEN}
+    - docker system prune -f
+    - docker build -t ${DOCKER_IMAGE} --target api .
+    - docker tag ${DOCKER_IMAGE} ${DOCKER_IMAGE}:${DOCKER_TAG}
+    - docker tag ${DOCKER_IMAGE} ${DOCKER_IMAGE}:latest
+    - docker push ${DOCKER_IMAGE}:${DOCKER_TAG}
+    - docker push ${DOCKER_IMAGE}:latest
+  only:
+    - live
+  tags:
+    - zte
+
+LIVE_Deploy:
+  stage: deploy
+  before_script:
+    - az login -u $CI_STG_AZURE_DEPLOY_NAME -p $CI_STG_AZURE_DEPLOY_PASSWORD
+  script:
+    - az webapp deployment slot swap --resource-group $CI_PROD_RESOURCE_GROUP --name $CI_PROD_WEBAPP_NAME --slot $CI_PROD_WEBAPP_SLOT --target-slot $CI_PROD_WEBAPP_TARGET_SLOT
+  only:
+    - live
+  tags:
+    - zte

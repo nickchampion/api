@@ -1,0 +1,31 @@
+version: '2'
+
+volumes:
+  db-data:
+    driver: local
+
+services:
+  node:
+    container_name: node-server
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+      args:
+        NODE_ENV: dev
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    environment:
+      - NODE_ENV=development
+      - STAGE=dev
+      - APP_HOST=0.0.0.0
+      - PORT=8080
+    command: npm run debug
+    ports:
+      - 8080:8080
+      - 9230:9230
+    extra_hosts:
+      - 'a.zesttee.com:192.168.65.2'
+      - 'b.zesttee.com:192.168.65.2'
+      - 'c.zesttee.com:192.168.65.2'

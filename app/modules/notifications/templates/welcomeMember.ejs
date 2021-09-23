@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Welcome to Zesttee!</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+      body {
+        font-family: Raleway;
+      }
+      a {
+        text-decoration: none;
+      }
+      #templateColumns {
+        margin: 0 auto;
+      }
+      .topCategotyContainer {
+        width: 100%;
+      }
+      .spanCategory {
+        font-weight: 600;
+        font-size: 16px;
+        color: #252525;
+        margin: 0 20px;
+        line-height: 25px;
+      }
+      .separator {
+        height: 1px;
+        background-color: grey;
+        margin: 15px 0;
+      }
+
+      .categoryImg {
+        width: 100%;
+        height: auto !important;
+        object-fit: contain !important;
+      }
+
+      .categoryInfo {
+        padding-left: 10px;
+      }
+      .categoryTitle {
+        font-size: 20px; 
+        color: #252525;
+        font-weight: 600;
+        line-height: 20px;
+        margin: 0;
+        text-align: start;
+      }
+      .categoryDes {
+        font-size: 16px; 
+        color: #252525;
+        line-height: 20px;
+        margin: 0;
+        text-align: start;
+      }
+
+      .leanMoreButton {
+        padding: 15px;
+        margin: 15px 0  30px;
+        background-color:#FEDD44;
+        font-weight: 700;
+        font-size: 12px;
+        color: #252525;
+        text-transform: uppercase;
+        width: fit-content;
+      }
+      @media only screen and (max-width: 480px) {
+        #templateColumns {
+          width: 100% !important;
+        }
+
+        .templateColumnContainer {
+          display: block !important;
+          width: 100% !important;
+        }
+
+        .columnImage {
+          height: auto !important;
+          max-width: 480px !important;
+          width: 100% !important;
+        }
+
+        .logoImage {
+          height: auto !important;
+          max-width: 200px !important;
+          width: 100% !important;
+        }
+
+        .leftColumnContent {
+          font-size: 16px !important;
+          line-height: 125% !important;
+          text-align: center;
+        }
+
+        .rightColumnContent {
+          font-size: 16px !important;
+          line-height: 125% !important;
+          text-align: center;
+        }
+
+        /* .category {
+          flex-direction: column;
+        }
+
+        .categoryImg {
+          width: 100%;
+          height: auto;
+          object-fit: contain;
+          margin-bottom: 15px;
+        }
+
+        .categoryInfo {
+          width: 100%;
+          padding-left: 0;
+          padding-bottom: 15px;
+        }
+
+        .leanMoreButton {
+          width: auto;
+        } */
+      }
+    </style>
+  </head>
+
+  <body style="text-align: center; margin: 0; padding: 0; background: #fff">
+    <div style="max-width: 800px; margin: 0 auto; background: #fff">
+      <header>
+        <div style="padding: 20px 0 10px">
+          <table border="0" cellpadding="0" cellspacing="0" width="680"
+            id="templateColumns">
+            <tr>
+              <td align="left" valign="bottom" width="50%"
+                class="templateColumnContainer">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <tr>
+                    <td align="left" valign="bottom" class="leftColumnContent">
+                      <img
+                        src="https://media.zesttee.com/cms/zesttee-logo_50b5f8d6d4f8_2182-b.png"
+                        width="200"
+                        style="max-width: 200px"
+                        class="logoImage"
+                        />
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td align="right" valign="bottom" width="50%"
+                class="templateColumnContainer">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                  <tr>
+                    <td align="right" valign="bottom"
+                      class="rightColumnContent">
+                      <span style="text-transform: uppercase; font-size: 13px;
+                        font-weight: 600; padding-bottom: 5px; letter-spacing:
+                        1px">Your Trusted Digital Health Clinic</span>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </header>
+      <content>
+        <div style="margin: 0 auto; padding: 0">
+          <div>
+            <img
+              src="https://media.zesttee.com/cms/welcome_8100-b.jpg"
+              alt="Your Trusted Digital Health Clinic"
+              style="width: 100%; display: block"
+              />
+          </div>
+          <div style="padding: 15px 15px 30px; background: #f3f2f1">
+            <div style="max-width: 700px; margin: 0 auto">
+              <p style="font-size: 24px; color: #252525; font-weight: 600;
+                margin: 15px 0; line-height: 20px">Welcome to Zesttee <%= name%>!</p>
+                <p style="font-size: 16px; color: #252525; margin: 15px 0;
+                  line-height: 20px">
+                  At Zesttee, we want to remind you to give a second thought on
+                  what matters most - yourself.
+                </p>
+                <p style="font-size: 16px; color: #252525; margin: 15px 0;
+                  line-height: 20px">
+                  Empowering you to better health one step at a time! Take
+                  action today.<br />Explore your current categories:
+                </p>
+                <div class="topCategotyContainer">
+                  <a href="<%= dailyHealthLink%>" target="_blank"><span
+                      class="spanCategory">Daily Health</span></a>
+                  <a href="<%= homeLabTestsLink%>" target="_blank"><span
+                      class="spanCategory">Home Lab Tests</span></a>
+                  <a href="<%= mensSexualHealthLink%>" target="_blank"><span
+                      class="spanCategory">Men's Sexual Health</span></a>
+                  <a href="<%= mensHairLossLink%>" target="_blank"><span
+                      class="spanCategory">Men's Hair Loss</span></a>
+                  <a href="<%= sleepStressLink%>" target="_blank"><span
+                      class="spanCategory">Sleep & Stress</span></a>
+                  <a href="<%= womensSexualHealthLink%>" target="_blank"><span
+                      class="spanCategory">Women's Sexual Health (Soon)</span></a>
+                  <a href="<%= fertilityLink%>" target="_blank"><span
+                      class="spanCategory">Fertility (Soon)</span></a>
+                </div>
+                <div class="separator"></div>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td style="vertical-align: top;">
+                        <img
+                          src="https://media.zesttee.com/cms/suppbox2_8126-a.png"
+                          class="categoryImg"
+                          alt=""
+                          />
+                      </td>
+                      <td colspan="2">
+                        <div class="categoryInfo">
+                          <a href="<%= dailyHealthLink%>" target="_blank"><p
+                              class="categoryTitle">Daily Health</p></a>
+                          <p class="categoryDes">Feel you personal best everyday
+                            with
+                            daily supplements.<br /><br />Improve your daily
+                            health
+                            with
+                            Zesttee Packs, addressing the most common health
+                            goals.
+                            Or, choose to personalise your supplements via our
+                            easy
+                            our assessment or the buidld-your-pack option.
+                          </p>
+                          <a href="<%= dailyHealthLink%>" target="_blank">
+                            <div class="leanMoreButton">Learn More</div>
+                          </a>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="vertical-align: top;">
+                        <img
+                          src="https://media.zesttee.com/cms/img-test5-8073-a_8683-a.jpg"
+                          class="categoryImg"
+                          alt=""
+                          />
+                      </td>
+                      <td colspan="2">
+                        <div class="categoryInfo">
+                          <a href="<%= homeLabTestsLink%>" target="_blank"><p
+                              class="categoryTitle">Home Lab Tests</p></a>
+                          <p class="categoryDes">Home lab testing made easy.
+                            Result
+                            made simple.<br /><br />Get tested in the comfort of
+                            your
+                            home. we have a range of tests that cover the most
+                            common
+                            health concerns, such as sleep, stress, fertility,
+                            cholesterol, vitamin D, and more.
+                          </p>
+                          <a href="<%= homeLabTestsLink%>" target="_blank">
+                            <div class="leanMoreButton">Learn More</div>
+                          </a>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="vertical-align: top;">
+                        <img
+                          src="https://media.zesttee.com/cms/msh_8065-b.png"
+                          class="categoryImg"
+                          alt=""
+                          />
+                      </td>
+                      <td colspan="2">
+                        <div class="categoryInfo">
+                          <a href="<%= mensSexualHealthLink%>" target="_blank"><p
+                              class="categoryTitle">Men's Sexual Health</p></a>
+                          <p class="categoryDes">Restore your vitality.<br /><br
+                              />Get
+                            suitable treatment for ED, PE, low testosterone, and
+                            prostate to boost your sexual health.. We offer
+                            discreet,
+                            professional care, genuine prescription medication
+                            (if
+                            approved) and/or natural supplements for long-term
+                            improvement.
+                          </p>
+                          <a href="<%= mensSexualHealthLink%>" target="_blank">
+                            <div class="leanMoreButton">Learn More</div>
+                          </a>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="vertical-align: top;">
+                        <img
+                          src="https://media.zesttee.com/cms/hairloss_8067-b.png"
+                          class="categoryImg"
+                          alt=""
+                          />
+                      </td>
+                      <td colspan="2">
+                        <div class="categoryInfo">
+                          <a href="<%= mensHairLossLink%>" target="_blank"><p
+                              class="categoryTitle">Men's Hair Loss</p></a>
+                          <p class="categoryDes">Regrow your confidence.<br /><br
+                              />Get
+                            effective medication and/or supplements for hair
+                            loss and
+                            discover its underlying cause if you choose to get
+                            tested
+                            with our Hair Loss Test.
+                          </p>
+                          <a href="<%= mensHairLossLink%>" target="_blank">
+                            <div class="leanMoreButton">Learn More</div>
+                          </a>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="vertical-align: top;">
+                        <img
+                          src="https://media.zesttee.com/cms/sleep-stress_8066-b.png"
+                          class="categoryImg"
+                          alt=""
+                          />
+                      </td>
+                      <td colspan="2">
+                        <div class="categoryInfo">
+                          <a href="<%= sleepStressLink%>" target="_blank"><p
+                              class="categoryTitle">Sleep & Stress</p></a>
+                          <p class="categoryDes">Feel revitalised & energised.<br
+                              /><br
+                              />Get good quality sleep and reduce your tress
+                            levels,
+                            and boost your energy & mood with our natural
+                            supplements.
+                            Circadin, an innovative sleep medication, will be
+                            comming
+                            soon.
+                          </p>
+                          <a href="<%= sleepStressLink%>" target="_blank">
+                            <div class="leanMoreButton">Learn More</div>
+                          </a>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="separator"></div>
+                <p style="font-size: 16px; color: #252525; margin: 15px 0;
+                  line-height: 20px">
+                  <span style="display: inline-block">If you can't find what
+                    you're looking for, drop us a note at <span
+                      style="font-weight: 600"><%= infoEmail%></span> or
+                      WhatsApp us at <span style="font-weight: 600">88899378
+                        (8889ZEST)</span></span></p>
+                </div>
+              </div>
+            </div>
+          </content>
+          <footer style="padding: 20px 0">
+            <!-- <p style="font-size: 12px; font-weight: 500; margin-bottom: 10px;">No longer want to receive these emails? <a href="#" style="color: #000; text-decoration: underline; font-weight: 600;">Unsubscribe</a></p> -->
+            <ul style="list-style: none; margin: 0; padding: 0">
+              <li style="padding: 0; margin: 0 5px 0 0; display: inline-block;
+                line-height: 18px; overflow: hidden; vertical-align: top">
+                <a href="https://www.instagram.com/zestteehealth/"
+                  target="_blank"><img
+                    src="https://media.zesttee.com/cms/ig-icon_2c2c451c3fc5_1953-a.png"
+                    width="18" alt="IG"
+                    /></a>
+              </li>
+              <li style="padding: 0; margin: 0 5px 0 0; display: inline-block;
+                line-height: 18px; overflow: hidden; vertical-align: top">
+                <a href="https://fb.me/ZestteeHealth" target="_blank"><img
+                    src="https://media.zesttee.com/cms/fb-icon_642df7390f5f_1922-a.png"
+                    width="18" alt="FB"
+                    /></a>
+              </li>
+              <li style="padding: 0; margin: 0 5px 0 0; display: inline-block;
+                line-height: 18px; overflow: hidden; vertical-align: top">
+                <table cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td valign="middle">
+                      <a href="https://api.whatsapp.com/send?phone=6588899378"
+                        target="_blank"><img
+                          src="https://media.zesttee.com/cms/wa-icon_2e80e884532b_2212-b.png"
+                          width="18" alt="whatsapp"
+                          /></a>
+                    </td>
+                    <td valign="middle" style="font-size: 13px; font-family:
+                      Roboto,
+                      sans-serif">
+                      &nbsp;<a
+                        href="https://api.whatsapp.com/send?phone=6588899378"
+                        target="_blank" style="color: #252525;
+                        text-decoration:
+                        none">88899378 (8889ZEST)</a>
+                    </td>
+                  </tr>
+                </table>
+              </li>
+              <li style="padding: 0; margin: 0 5px 0 0; display: inline-block;
+                line-height: 18px; overflow: hidden; vertical-align: top">
+                <table cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td valign="middle">
+                      <a href="https://t.me/zesttee" target="_blank"><img
+                          src="https://media.zesttee.com/cms/telegram-icon_5b4730a45885_1954-a.png"
+                          width="18" alt="Telegram"
+                          /></a>
+                    </td>
+                    <td valign="middle" style="font-size: 13px; font-family:
+                      Roboto,
+                      sans-serif">
+                      &nbsp;<a href="https://t.me/zesttee" target="_blank"
+                        style="color: #252525; text-decoration: none">General
+                        Wellness</a>
+                    </td>
+                  </tr>
+                </table>
+              </li>
+              <li style="padding: 0; margin: 0; display: inline-block;
+                line-height:
+                18px; overflow: hidden; vertical-align: top">
+                <table cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td valign="top">
+                      <a href="https://t.me/Mrzesttee" target="_blank"><img
+                          src="https://media.zesttee.com/cms/telegram-icon_5b4730a45885_1954-a.png"
+                          width="18" alt="Telegram"
+                          /></a>
+                    </td>
+                    <td valign="middle" style="font-size: 13px; font-family:
+                      Roboto,
+                      sans-serif">
+                      &nbsp;<a href="https://t.me/Mrzesttee" target="_blank"
+                        style="color: #252525; text-decoration: none">Men’s
+                        Health</a>
+                    </td>
+                  </tr>
+                </table>
+              </li>
+            </ul>
+            <p style="font-size: 13px; font-weight: 500; color: #252525;
+              font-family: Roboto, sans-serif">
+              &copy; <%= new Date().getFullYear() %> Zesttee. All rights
+                reserved.
+              </p>
+            </footer>
+          </div>
+        </body>
+      </html>

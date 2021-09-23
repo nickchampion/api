@@ -1,0 +1,32 @@
+version: '2'
+
+volumes:
+  redis_data: {}
+  db-data:
+    driver: local
+
+services:
+  node:
+    container_name: node-server
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+      args:
+        NODE_ENV: dev
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    depends_on:
+      - redis
+    environment:
+      - NODE_ENV=development
+      - REDIS_URL=redis://redis:6379/1
+      - APP_HOST=0.0.0.0
+      - PORT=8080
+    ports:
+      - 8080:8080
+  redis:
+    image: redis:3.2-alpine
+    volumes:
+      - redis_data:/data

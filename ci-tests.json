@@ -1,0 +1,735 @@
+{
+	"info": {
+		"_postman_id": "c9a8f136-cc55-4bb3-aa22-309009262359",
+		"name": "ci-tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "prepare",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test run prepared successfully\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.success).to.eql(true);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{Api-Host}}/api/test/prepare",
+							"host": [
+								"{{Api-Host}}"
+							],
+							"path": [
+								"api",
+								"test",
+								"prepare"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "geo ip lookup",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "zesttee_notifications",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "5@ytCx@82D9f",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{Api-Host}}/api/client/authentication/location?ip=86.15.197.77",
+							"host": [
+								"{{Api-Host}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"authentication",
+								"location"
+							],
+							"query": [
+								{
+									"key": "ip",
+									"value": "86.15.197.77"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = pm.response.json();\r",
+									"pm.collectionVariables.set(\"UserId\", response.user.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"{{Email}}\",\n\t\"phone\": \"+65 98765432\",\n\t\"password\": \"{{Password}}\",\n\t\"emailNotifications\": true,\n\t\"smsNotifications\": false,\n    \"gender\": \"Male\"\n}"
+						},
+						"url": {
+							"raw": "{{Api-Host}}/api/client/authentication/register",
+							"host": [
+								"{{Api-Host}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"authentication",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "init",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Test run initialised successfully\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.success).to.eql(true);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{Api-Host}}/api/test/init",
+							"host": [
+								"{{Api-Host}}"
+							],
+							"path": [
+								"api",
+								"test",
+								"init"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var response = pm.response.json();\r",
+									"pm.collectionVariables.set(\"Token\", response.user.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"{{Email}}\",\n\t\"password\": \"{{Password}}\"\n}"
+						},
+						"url": {
+							"raw": "{{Api-Host}}/api/client/authentication/login",
+							"host": [
+								"{{Api-Host}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"authentication",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response is status Ok\", function () {",
+							"    pm.response.to.be.ok;",
+							"    pm.response.to.be.withBody;",
+							"    pm.response.to.be.json;",
+							"});"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "account",
+			"item": [
+				{
+					"name": "profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Correct account returned\", function () {\r",
+									"    var response = pm.response.json();\r",
+									"    pm.expect(response.email).to.eql(pm.environment.get(\"Email\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"type": "text",
+								"value": "en"
+							}
+						],
+						"url": {
+							"raw": "{{Api-Host}}/api/client/users",
+							"host": [
+								"{{Api-Host}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Profile Updated Successfully\", function () {\r",
+									"    var response = pm.response.json();\r",
+									"    pm.expect(response.email).to.eql(pm.environment.get(\"Email\"));\r",
+									"    pm.expect(response.firstName).to.eql(\"automated\");\r",
+									"    pm.expect(response.lastName).to.eql(\"test\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"type": "text",
+								"value": "en"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"automated\",\r\n    \"lastName\": \"test\",\r\n    \"dob\": \"21/06/1999\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Api-Host}}/api/client/users",
+							"host": [
+								"{{Api-Host}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response is status Ok\", function () {",
+							"    pm.response.to.be.ok;",
+							"    pm.response.to.be.withBody;",
+							"    pm.response.to.be.json;",
+							"});"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "cms",
+			"item": [
+				{
+					"name": "home",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Contains valid cms type\", function () {\r",
+									"    var json = pm.response.json();\r",
+									"    pm.expect(json.type).to.eql(\"page\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Api-Host}}/api/client/cms/home-page",
+							"host": [
+								"{{Api-Host}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"cms",
+								"home-page"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "health-tests",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Contains valid cms type\", function () {\r",
+									"    var json = pm.response.json();\r",
+									"    pm.expect(json.type).to.eql(\"page\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Api-Host}}/api/client/cms/home-lab-tests",
+							"host": [
+								"{{Api-Host}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"cms",
+								"home-lab-tests"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sexual-health",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Contains valid cms type\", function () {\r",
+									"    var json = pm.response.json();\r",
+									"    pm.expect(json.type).to.eql(\"page\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Api-Host}}/api/client/cms/sexual-health/male-performance",
+							"host": [
+								"{{Api-Host}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"cms",
+								"sexual-health",
+								"male-performance"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "menu",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Contains valid cms type\", function () {\r",
+									"    var json = pm.response.json();\r",
+									"    pm.expect(json.type).to.eql(\"menu\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Api-Host}}/api/client/cms/menu",
+							"host": [
+								"{{Api-Host}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"cms",
+								"menu"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response is status Ok\", function () {",
+							"    pm.response.to.be.ok;",
+							"    pm.response.to.be.withBody;",
+							"    pm.response.to.be.json;",
+							"});",
+							"",
+							"pm.test(\"Contains valid cms data\", function () {",
+							"    var json = pm.response.json();",
+							"    pm.expect(json.locale).to.eql(\"en\");",
+							"    pm.expect(json.content).to.not.eql(null);",
+							"    pm.expect(json.content).to.not.eql({});",
+							"    pm.expect(json.content.items.length).to.be.above(0);",
+							"});"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "checkout",
+			"item": [
+				{
+					"name": "products",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is status 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Api-Host}}/api/client/products",
+							"host": [
+								"{{Api-Host}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "address book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"type": "text",
+								"value": "en"
+							}
+						],
+						"url": {
+							"raw": "{{Api-Host}}/api/client/addresses",
+							"host": [
+								"{{Api-Host}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"addresses"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "cms query",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Returns at least one category page\", function () {\r",
+									"    var json = pm.response.json();\r",
+									"    pm.expect(json.results.length).to.be.above(0);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Api-Host}}/api/admin/cms?limit=20&offset=0&filter=%7B%22type%22%3A%22categoryPage%22%7D",
+							"host": [
+								"{{Api-Host}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"cms"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								},
+								{
+									"key": "filter",
+									"value": "%7B%22type%22%3A%22categoryPage%22%7D"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "Token",
+			"value": ""
+		},
+		{
+			"key": "UserId",
+			"value": ""
+		}
+	]
+}
